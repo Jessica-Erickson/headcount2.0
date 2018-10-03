@@ -36,4 +36,13 @@ export default class DistrictRepository {
       return allSchools;
     }
   }
+
+  findAverage = (name) => {
+    const schoolInfo = this.findByName(name).stats;
+    const years = Object.keys(schoolInfo);
+    let average = years.reduce((acc, year) => {
+      return acc += (schoolInfo[year] / years.length);
+    }, 0)
+    return Math.round(average * 1000) / 1000;
+  }
 }
