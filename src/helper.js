@@ -45,4 +45,11 @@ export default class DistrictRepository {
     }, 0)
     return Math.round(average * 1000) / 1000;
   }
+
+  compareDistrictAverages = (name1, name2) => {
+    const betterNames = [name1.toUpperCase(), name2.toUpperCase()];
+    const averages = [this.findAverage(name1), this.findAverage(name2)];
+    const ratio = Math.round((averages[0]/averages[1]) * 1000) / 1000;
+    return {[betterNames[0]]: averages[0], [betterNames[1]]: averages[1], compared: ratio};
+  }
 }
