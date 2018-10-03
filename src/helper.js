@@ -19,6 +19,8 @@ export default class DistrictRepository {
   findByName = (name) => {
     if (name === '') {
       return undefined;
+    } else if (!Object.keys(this.stats).includes(name)) {
+      return undefined;
     }
   }
 }
