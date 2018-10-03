@@ -18,7 +18,10 @@ export default class DistrictRepository {
 
   findByName = (name) => {
     if (name !== undefined && Object.keys(this.stats).includes(name.toUpperCase())) {
-      return {location: name.toUpperCase()};
+      return {
+        location: name.toUpperCase(),
+        stats: this.stats[name.toUpperCase()]
+      };
     }
   }
 }
