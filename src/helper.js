@@ -24,4 +24,10 @@ export default class DistrictRepository {
       };
     }
   }
+
+  findAllMatches = () => {
+    return Object.keys(this.stats).map(school => {
+      this.findByName(school);
+    });
+  }
 }
