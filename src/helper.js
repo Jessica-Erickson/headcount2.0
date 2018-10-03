@@ -15,4 +15,10 @@ export default class DistrictRepository {
 
     return notGarbage;
   }
+
+  findByName = (name) => {
+    if (name === '') {
+      return undefined;
+    }
+  }
 }
