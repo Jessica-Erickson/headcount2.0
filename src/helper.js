@@ -3,24 +3,27 @@ export default class DistrictRepository {
     this.stats = this.cleanData(data);
   }
 
-  cleanData = (garbage) => {
-    let notGarbage = garbage.reduce((acc, datum) => {
-      if (acc[datum.Location.toUpperCase()] === undefined) {
-          acc[datum.Location.toUpperCase()] = {[datum.TimeFrame]: (Math.round(datum.Data * 1000) / 1000) || 0}
+  cleanData = (rawData) => {
+    return rawData.reduce((acc, datum) => {
+      const { Location , TimeFrame , Data } = datum;
+      const betterLocation = Location.toUpperCase();
+
+      if (acc[betterLocation] === undefined) {
+          acc[betterLocation] = {[TimeFrame]: (Math.round(Data * 1000) / 1000) || 0}
       } else {
-        Object.assign(acc[datum.Location.toUpperCase()], {[datum.TimeFrame]: (Math.round(datum.Data * 1000) / 1000) || 0})
+        Object.assign(acc[betterLocation], {[TimeFrame]: (Math.round(Data * 1000) / 1000) || 0})
       }
       return acc;
-    }, {});
 
-    return notGarbage;
+    }, {});
   }
 
   findByName = (name) => {
     if (name !== undefined && Object.keys(this.stats).includes(name.toUpperCase())) {
+      const betterName = name.toUpperCase();
       return {
-        location: name.toUpperCase(),
-        stats: this.stats[name.toUpperCase()]
+        location: betterName,
+        stats: this.stats[betterName]
       };
     }
   }
