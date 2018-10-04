@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       search: '',
       compare: [],
-      dataSet: 'kinderData',
       repo: new DistrictRepository(kinderData)
     }
   }

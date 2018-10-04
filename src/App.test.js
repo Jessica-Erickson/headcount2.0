@@ -28,12 +28,6 @@ describe('App', () => {
     expect(wrapper.state('compare')).toEqual([]);
   });
 
-  it('should keep track of what data is used', () => {
-    const wrapper = shallow(<App />);
-
-    expect(wrapper.state('dataSet')).toEqual('kinderData');
-  });
-
   it('should keep a repo of the relevant data', () => {
     const wrapper = shallow(<App />);
 
@@ -151,15 +145,6 @@ describe('App', () => {
     wrapper.instance().handleCardClick(name2);
 
     expect(wrapper.state('compare')).toEqual(expected);
-  });
-
-  it('should accept a new dataset when the user wants one', () => {
-    const wrapper = shallow(<App />);
-    const name = 'titleIStudents';
-
-    wrapper.instance().handleHeaderClick(name);
-
-    expect(wrapper.state('dataSet')).toEqual(name);
   });
 
   it('should have different data when selected', () => {
