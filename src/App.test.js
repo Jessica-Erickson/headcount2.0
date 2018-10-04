@@ -20,4 +20,10 @@ describe('App', () => {
 
     expect(wrapper.state('search')).toEqual('');
   });
+
+  it('should keep track of which cards to compare', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.state('compare')).toEqual([]);
+  })
 })
