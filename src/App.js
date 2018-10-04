@@ -34,6 +34,10 @@ class App extends Component {
     });
   }
 
+  handleHeaderClick = (name) => {
+    this.setState({dataSet: name});
+  }
+
   render() {
     return (
       <div>Welcome To Headcount 2.0</div>
