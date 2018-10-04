@@ -4,7 +4,7 @@ export default class DistrictRepository {
   }
 
   cleanData = (rawData) => {
-    return rawData.reduce((acc, datum) => {
+    const betterData = rawData.reduce((acc, datum) => {
       const { Location , TimeFrame , Data } = datum;
       const betterLocation = Location.toUpperCase();
 
@@ -16,6 +16,8 @@ export default class DistrictRepository {
       return acc;
 
     }, {});
+
+    return betterData;
   }
 
   findByName = (name) => {
