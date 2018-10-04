@@ -25,5 +25,11 @@ describe('App', () => {
     const wrapper = shallow(<App />);
 
     expect(wrapper.state('compare')).toEqual([]);
-  })
+  });
+
+  it('should keep track of what data is used', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.state('dataSet')).toEqual('kinderData');
+  });
 })
