@@ -25,6 +25,15 @@ class App extends Component {
     }
   }
 
+  handleCompareClick = (name) => {
+    this.setState({
+      compare: 
+      this.state.compare.filter(card => {
+        return card.location !== name;
+      })
+    });
+  }
+
   render() {
     return (
       <div>Welcome To Headcount 2.0</div>
