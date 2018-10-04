@@ -71,4 +71,17 @@ describe('App', () => {
 
     expect(wrapper.state('compare')).toEqual(expected);
   });
+
+  it('should add up to two cards in compare', () => {
+    const wrapper = shallow(<App />);
+    const name1 = 'AGATE 300';
+    const name2 = 'MOFFAT 2';
+    const name3 = 'LONE STAR 101';
+
+    wrapper.instance().handleCardClick(name1);
+    wrapper.instance().handleCardClick(name2);
+    wrapper.instance().handleCardClick(name3);
+
+    expect(wrapper.state('compare')).toHaveLength(2);
+  });
 });
