@@ -152,4 +152,13 @@ describe('App', () => {
 
     expect(wrapper.state('compare')).toEqual(expected);
   });
+
+  it('should accept a new dataset when the user wants one', () => {
+    const wrapper = shallow(<App />);
+    const name = 'titleIStudents';
+
+    wrapper.instance().handleHeaderClick(name);
+
+    expect(wrapper.state('dataSet')).toEqual(name);
+  })
 });
