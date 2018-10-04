@@ -41,8 +41,7 @@ class App extends Component {
 
   handleCardClick = (name) => {
     if (this.state.compare.length < 2) {
-      const cardData = this.state.repo.findByName(name);
-      this.setState({compare: [...this.state.compare, cardData]}); 
+      this.setState({compare: [...this.state.compare, name]}); 
     }
   }
 
@@ -50,7 +49,7 @@ class App extends Component {
     this.setState({
       compare: 
       this.state.compare.filter(card => {
-        return card.location !== name;
+        return card !== name;
       })
     });
   }
