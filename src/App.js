@@ -6,7 +6,8 @@ class App extends Component {
     super()
     this.state = {
       search: '',
-      compare: []
+      compare: [],
+      dataSet: 'kinderData'
     }
   }
 
