@@ -30,9 +30,23 @@ class App extends Component {
     }
 
     this.data = {
-      kinderData: kinderData,
-      onlineEnrollment: onlineEnrollment,
-      titleIStudents: titleIStudents
+      'Kindergartners In Full Day Program': kinderData,
+      'Online Pupil Enrollment': onlineEnrollment,
+      'Title I Students': titleIStudents,
+      '3rd Grade Tests': thirdGradeTests,
+      '8th Grade Test Scores': eighthGradeTests,
+      'Average Ethnicity Math Scores': aveEthMath,
+      'Average Ethnicity Reading Scores': aveEthReading,
+      'Average Ethnicity Writing Scores': aveEthWriting,
+      'Dropout Rates by Ethnicity': dropoutRates,
+      'High School Graduation Rates': hsGraduation,
+      'Median Household Income': medianIncome,
+      'Pupil Enrollment': regEnrollment,
+      'Pupil Enrollment by Ethnicity': enrollmentByEth,
+      'Remediation in Higher Education': remediation,
+      'School Aged Children in Poverty': childrenInPoverty,
+      'Special Education': specialEd,
+      'Students Qualifying for Free or Reduced Price Lunch': frLunch
     }
   }
 
