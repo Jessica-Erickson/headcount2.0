@@ -32,4 +32,14 @@ describe('App', () => {
 
     expect(wrapper.state('dataSet')).toEqual('kinderData');
   });
+
+  it('should update search when handleSearch is called', () => {
+    const wrapper = shallow(<App />);
+    const testEvent = {target: {value: 'denver'}};
+    const expected = 'denver';
+
+    wrapper.instance().handleSearch(testEvent);
+
+    expect(wrapper.state('search')).toEqual(expected);
+  });
 })
