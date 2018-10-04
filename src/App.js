@@ -13,6 +13,12 @@ class App extends Component {
       compare: [],
       repo: new DistrictRepository(kinderData)
     }
+
+    this.data = {
+      kinderData: kinderData,
+      onlineEnrollment: onlineEnrollment,
+      titleIStudents: titleIStudents
+    }
   }
 
   handleSearch = (event) => {
@@ -36,7 +42,9 @@ class App extends Component {
   }
 
   handleHeaderClick = (name) => {
-    this.setState({ dataSet: name });
+    this.setState({ 
+      repo: new DistrictRepository(this.data[name])
+    });
   }
 
   render() {
