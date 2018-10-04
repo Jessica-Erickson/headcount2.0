@@ -11,6 +11,10 @@ class App extends Component {
     }
   }
 
+  handleSearch = (event) => {
+    this.setState({search: event.target.value});
+  }
+
   render() {
     return (
       <div>Welcome To Headcount 2.0</div>
