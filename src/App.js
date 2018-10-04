@@ -18,6 +18,7 @@ import remediation from './data/remediation_in_higher_education';
 import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
+import Controls from './Controls';
 
 class App extends Component {
   constructor() {
@@ -62,7 +63,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>Welcome To Headcount 2.0</div>
+      <div className='App'>
+        <Controls />
+      </div>
     );
   }
 }
