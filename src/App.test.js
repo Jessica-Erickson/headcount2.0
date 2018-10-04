@@ -65,7 +65,7 @@ describe('App', () => {
          '2011': 1,
          '2012': 1,
          '2013': 1,
-         '2014': 1 } }];
+         '2014': 1 }}];
 
     wrapper.instance().handleCardClick(name);
 
@@ -84,4 +84,30 @@ describe('App', () => {
 
     expect(wrapper.state('compare')).toHaveLength(2);
   });
+
+  it('should remove compare cards when clicked', () => {
+    const wrapper = shallow(<App />);
+    const name1 = 'AGATE 300';
+    const name2 = 'MOFFAT 2';
+    const expected = [{location: 'MOFFAT 2',
+      stats: 
+       {'2004': 0.014, 
+        '2005': 0.08, 
+        '2006': 0.081, 
+        '2007': 0.085, 
+        '2008': 0.129, 
+        '2009': 1, 
+        '2010': 1, 
+        '2011': 1, 
+        '2012': 1, 
+        '2013': 1, 
+        '2014': 1}}];
+
+    wrapper.instance().handleCardClick(name1);
+    wrapper.instance().handleCardClick(name2);
+
+    wrapper.instance().handleCompareClick(name1);
+
+    expect(wrapper.state('compare')).toEqual(expected);
+  })
 });

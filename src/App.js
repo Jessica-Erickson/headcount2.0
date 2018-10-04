@@ -19,8 +19,10 @@ class App extends Component {
   }
 
   handleCardClick = (name) => {
-    const cardData = this.state.repo.findByName(name);
-    this.setState({compare: [...this.state.compare, cardData]});
+    if (this.state.compare.length < 2) {
+      const cardData = this.state.repo.findByName(name);
+      this.setState({compare: [...this.state.compare, cardData]}); 
+    }
   }
 
   render() {
