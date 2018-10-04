@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import DistrictRepository from './helper';
+import kinderData from './data/kindergartners_in_full_day_program';
 
 class App extends Component {
   constructor() {
@@ -7,12 +9,18 @@ class App extends Component {
     this.state = {
       search: '',
       compare: [],
-      dataSet: 'kinderData'
+      dataSet: 'kinderData',
+      repo: new DistrictRepository(kinderData)
     }
   }
 
   handleSearch = (event) => {
     this.setState({search: event.target.value});
+  }
+
+  handleCardClick = (name) => {
+    const cardData = this.state.repo.findByName(name);
+    this.setState({compare: [...this.state.compare, cardData]});
   }
 
   render() {
