@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import DistrictRepository from './helper';
 import kinderData from './data/kindergartners_in_full_day_program';
+import onlineEnrollment from './data/online_pupil_enrollment';
+import titleIStudents from './data/title_i_students';
 
 class App extends Component {
   constructor() {
@@ -35,7 +37,7 @@ class App extends Component {
   }
 
   handleHeaderClick = (name) => {
-    this.setState({dataSet: name});
+    this.setState({ dataSet: name });
   }
 
   render() {

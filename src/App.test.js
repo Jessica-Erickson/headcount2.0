@@ -160,5 +160,19 @@ describe('App', () => {
     wrapper.instance().handleHeaderClick(name);
 
     expect(wrapper.state('dataSet')).toEqual(name);
-  })
+  });
+
+  it('should have different data when selected', () => {
+    const wrapper = shallow(<App />);
+    const schoolName = 'PLATTE VALLEY RE-7';
+    const dataName = 'onlineEnrollment';
+    const expected = [{ location: 'PLATTE VALLEY RE-7',
+        stats: { '2011': 0, '2012': 0, '2013': 0 }}]
+
+    wrapper.instance().handleHeaderClick(dataName);
+
+    wrapper.instance().handleCardClick(schoolName);
+
+    expect(wrapper.state('compare')).toEqual(expected);
+  });
 });
