@@ -14,4 +14,10 @@ describe('App', () => {
 
     expect(wrapper).toMatchSnapshot()
   });
+
+  it('should keep track of what is in the search bar', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.state('search')).toEqual('');
+  });
 })
