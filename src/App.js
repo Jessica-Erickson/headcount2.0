@@ -19,6 +19,7 @@ import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
 import Controls from './Controls';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -78,10 +79,17 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Controls />
+        <Controls 
+          options={Object.keys(this.data)} 
+          handleHeaderClick={this.handleHeaderClick} />
       </div>
     );
   }
 }
 
 export default App;
+
+Controls.propTypes = {
+  options: PropTypes.array.isRequired,
+  handleHeaderClick: PropTypes.func.isRequired
+}
