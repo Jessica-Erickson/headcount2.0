@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {shallow} from 'enzyme';
+import DistrictRepository from './helper';
 
 describe('App', () => {
   it('renders without crashing', () => {
@@ -31,6 +32,12 @@ describe('App', () => {
     const wrapper = shallow(<App />);
 
     expect(wrapper.state('dataSet')).toEqual('kinderData');
+  });
+
+  it('should keep a repo of the relevant data', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.state('repo')).toBeInstanceOf(DistrictRepository);
   });
 
   it('should update search when handleSearch is called', () => {
