@@ -19,9 +19,8 @@ import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
 import Controls from './Controls';
-import PropTypes from 'prop-types';
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -85,11 +84,4 @@ class App extends Component {
       </div>
     );
   }
-}
-
-export default App;
-
-Controls.propTypes = {
-  options: PropTypes.array.isRequired,
-  handleHeaderClick: PropTypes.func.isRequired
 }

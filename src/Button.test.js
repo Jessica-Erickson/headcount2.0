@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Controls from './Controls';
+import Button from './Button';
 import {shallow} from 'enzyme';
 
-describe('Controls', () => {
+describe('Button', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Controls 
-                      options={[]} 
+    ReactDOM.render(<Button 
+                      text='testText' 
+                      key='testText' 
                       handleHeaderClick={() => {}} />, 
                     div);
   });
 
   it('should match the snapshot', () => {
-    const wrapper = shallow(<Controls 
-                              options={[]} 
+    const wrapper = shallow(<Button 
+                              text='testText' 
+                              key='testText' 
                               handleHeaderClick={() => {}} />);
 
     expect(wrapper).toMatchSnapshot()
