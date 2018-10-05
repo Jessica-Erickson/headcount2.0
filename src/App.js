@@ -20,12 +20,12 @@ import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
 import Controls from './Controls';
 import Compare from './Compare';
+import CardConatiner from './CardConatiner';
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      search: '',
       compare: [],
       repo: new DistrictRepository(kinderData)
     }
@@ -49,10 +49,6 @@ export default class App extends Component {
       'Special Education': specialEd,
       'Students Qualifying for Free or Reduced Price Lunch': frLunch
     }
-  }
-
-  handleSearch = (event) => {
-    this.setState({search: event.target.value});
   }
 
   handleCardClick = (name) => {
@@ -85,7 +81,8 @@ export default class App extends Component {
         <Compare 
           toCompare={this.state.compare}
           repo={this.state.repo}
-          handleCompareClick={this.handleCompareClick} /> 
+          handleCompareClick={this.handleCompareClick} />
+        <CardConatiner />
       </div>
     );
   }
