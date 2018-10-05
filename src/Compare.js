@@ -1,5 +1,6 @@
 import React from 'react';
 import './Compare.css';
+import Card from './Card';
 import PropTypes from 'prop-types';
 
 export default function Compare({ toCompare , repo , handleCompareClick }) {
