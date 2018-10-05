@@ -3,7 +3,7 @@ import './Compare.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-export default function Compare({ toCompare , repo , handleCompareClick }) {
+const Compare = ({ toCompare , repo , handleCompareClick }) => {
   let cards;
   if ( toCompare.length === 1 ) {
     const data = repo.findByName(toCompare[0]);
@@ -42,3 +42,5 @@ Compare.propTypes = {
   repo: PropTypes.object.isRequired,
   handleCompareClick: PropTypes.func.isRequired
 }
+
+export default Compare;

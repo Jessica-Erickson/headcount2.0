@@ -3,7 +3,7 @@ import './Controls.css';
 import Button from './Button';
 import PropTypes from 'prop-types';
 
-export default function Controls({ options , handleHeaderClick }) {
+const Controls = ({ options , handleHeaderClick }) => {
 
   return (
     <nav> 
@@ -25,3 +25,5 @@ Controls.propTypes = {
   options: PropTypes.array.isRequired,
   handleHeaderClick: PropTypes.func.isRequired
 }
+
+export default Controls;

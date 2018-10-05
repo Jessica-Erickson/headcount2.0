@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export default function Card({ data , handleCompareClick }) {
+const Card = ({ data , handleCompareClick }) => {
   let card;
   if (handleCompareClick) {
     card = (
@@ -34,3 +34,5 @@ Card.propTypes = {
   data: PropTypes.object.isRequired,
   handleCompareClick: PropTypes.func
 }
+
+export default Card;
