@@ -7,7 +7,11 @@ export default function Compare({ toCompare , repo , handleCompareClick }) {
   let cards;
   if ( toCompare.length === 1 ) {
     const data = repo.findByName(toCompare[0]);
-    cards = (<Card data={data} />);
+    cards = (<Card 
+              data={data} 
+              handleCompareClick={() => {
+                handleCompareClick(data.location)
+              }} />);
   } else if ( toCompare.length === 2 ) {
     const data1 = repo.findByName(toCompare[0]);
     const data2 = repo.compareDistrictAverages(toCompare[0],toCompare[1]);
@@ -15,9 +19,17 @@ export default function Compare({ toCompare , repo , handleCompareClick }) {
 
     cards = (
       <div>
-        <Card data={data1} />
+        <Card 
+          data={data1} 
+          handleCompareClick={() => {
+            handleCompareClick(data1.location)
+          }} />
         <Card data={data2} />
-        <Card data={data3} />
+        <Card 
+          data={data3} 
+          handleCompareClick={() => {
+          handleCompareClick(data3.location)
+          }} />
       </div>
     )
   }
