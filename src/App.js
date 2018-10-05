@@ -18,8 +18,9 @@ import remediation from './data/remediation_in_higher_education';
 import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
+import Controls from './Controls';
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -29,9 +30,23 @@ class App extends Component {
     }
 
     this.data = {
-      kinderData: kinderData,
-      onlineEnrollment: onlineEnrollment,
-      titleIStudents: titleIStudents
+      'Kindergartners In Full Day Program': kinderData,
+      'Online Pupil Enrollment': onlineEnrollment,
+      'Title I Students': titleIStudents,
+      '3rd Grade Tests': thirdGradeTests,
+      '8th Grade Test Scores': eighthGradeTests,
+      'Average Ethnicity Math Scores': aveEthMath,
+      'Average Ethnicity Reading Scores': aveEthReading,
+      'Average Ethnicity Writing Scores': aveEthWriting,
+      'Dropout Rates by Ethnicity': dropoutRates,
+      'High School Graduation Rates': hsGraduation,
+      'Median Household Income': medianIncome,
+      'Pupil Enrollment': regEnrollment,
+      'Pupil Enrollment by Ethnicity': enrollmentByEth,
+      'Remediation in Higher Education': remediation,
+      'School Aged Children in Poverty': childrenInPoverty,
+      'Special Education': specialEd,
+      'Students Qualifying for Free or Reduced Price Lunch': frLunch
     }
   }
 
@@ -41,8 +56,7 @@ class App extends Component {
 
   handleCardClick = (name) => {
     if (this.state.compare.length < 2) {
-      const cardData = this.state.repo.findByName(name);
-      this.setState({compare: [...this.state.compare, cardData]}); 
+      this.setState({compare: [...this.state.compare, name]}); 
     }
   }
 
@@ -50,7 +64,7 @@ class App extends Component {
     this.setState({
       compare: 
       this.state.compare.filter(card => {
-        return card.location !== name;
+        return card !== name;
       })
     });
   }
@@ -63,9 +77,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>Welcome To Headcount 2.0</div>
+      <div className='App'>
+        <Controls 
+          options={Object.keys(this.data)} 
+          handleHeaderClick={this.handleHeaderClick} />
+      </div>
     );
   }
 }
-
-export default App;

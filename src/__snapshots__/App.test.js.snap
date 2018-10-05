@@ -1,7 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should match the snapshot 1`] = `
-<div>
-  Welcome To Headcount 2.0
+<div
+  className="App"
+>
+  <Controls
+    handleHeaderClick={[Function]}
+    options={
+      Array [
+        "Kindergartners In Full Day Program",
+        "Online Pupil Enrollment",
+        "Title I Students",
+        "3rd Grade Tests",
+        "8th Grade Test Scores",
+        "Average Ethnicity Math Scores",
+        "Average Ethnicity Reading Scores",
+        "Average Ethnicity Writing Scores",
+        "Dropout Rates by Ethnicity",
+        "High School Graduation Rates",
+        "Median Household Income",
+        "Pupil Enrollment",
+        "Pupil Enrollment by Ethnicity",
+        "Remediation in Higher Education",
+        "School Aged Children in Poverty",
+        "Special Education",
+        "Students Qualifying for Free or Reduced Price Lunch",
+      ]
+    }
+  />
 </div>
 `;
