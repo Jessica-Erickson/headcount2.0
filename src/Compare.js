@@ -1,5 +1,6 @@
 import React from 'react';
 import './Compare.css';
+import PropTypes from 'prop-types';
 
 export default function Compare({ toCompare , repo , handleCompareClick }) {
   let cards;
@@ -27,4 +28,10 @@ export default function Compare({ toCompare , repo , handleCompareClick }) {
       }
     </aside>
   )
+}
+
+Compare.propTypes = {
+  toCompare: PropTypes.array.isRequired,
+  repo: PropTypes.object.isRequired,
+  handleCompareClick: PropTypes.func.isRequired
 }
