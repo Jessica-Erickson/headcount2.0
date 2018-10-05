@@ -18,19 +18,19 @@ export default function Compare({ toCompare , repo , handleCompareClick }) {
     const data3 = repo.findByName(toCompare[1]);
 
     cards = (
-      <div>
+      [
         <Card 
           data={data1} 
           handleCompareClick={() => {
             handleCompareClick(data1.location)
-          }} />
-        <Card data={data2} />
+          }} />,
+        <Card data={data2} />,
         <Card 
           data={data3} 
           handleCompareClick={() => {
           handleCompareClick(data3.location)
           }} />
-      </div>
+      ]
     )
   }
 
