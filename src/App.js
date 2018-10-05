@@ -81,6 +81,7 @@ export default class App extends Component {
         <Controls 
           options={Object.keys(this.data)} 
           handleHeaderClick={this.handleHeaderClick} />
+        <Compare /> 
       </div>
     );
   }
