@@ -19,6 +19,7 @@ import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
 import Controls from './Controls';
+import Compare from './Compare';
 
 export default class App extends Component {
   constructor() {
