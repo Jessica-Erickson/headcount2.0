@@ -13,6 +13,7 @@ import specialEd from './data/special_education';
 import Controls from './Controls';
 import Compare from './Compare';
 import CardContainer from './CardContainer';
+import Search from './Search';
 
 export default class App extends Component {
   constructor() {
