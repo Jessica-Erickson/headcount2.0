@@ -1,15 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should match the snapshot 1`] = `
-<article>
-  <h2>
-    undefined: undefined
-  </h2>
-  <h2>
-    &lt;---undefined---&gt;
-  </h2>
-  <h2>
-    undefined: undefined
-  </h2>
-</article>
-`;
+exports[`Card should match the snapshot 1`] = `""`;

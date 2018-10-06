@@ -4,22 +4,16 @@ import DistrictRepository from './helper';
 import kinderData from './data/kindergartners_in_full_day_program';
 import onlineEnrollment from './data/online_pupil_enrollment';
 import titleIStudents from './data/title_i_students';
-import thirdGradeTests from './data/3rd_grade_tests';
-import eighthGradeTests from './data/8th_grade_test_scores';
-import aveEthMath from './data/average_race_ethnicity_math_scores';
-import aveEthReading from './data/average_race_ethnicity_reading_scores';
-import aveEthWriting from './data/average_race_ethnicity_writing_scores';
-import dropoutRates from './data/dropout_rates_by_race_and_ethnicity';
 import hsGraduation from './data/high_school_graduation_rates';
 import medianIncome from './data/median_household_income';
 import regEnrollment from './data/pupil_enrollment';
-import enrollmentByEth from './data/pupil_enrollment_by_race_ethnicity';
 import remediation from './data/remediation_in_higher_education';
 import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
-import frLunch from './data/students_qualifying_for_free_or_reduced_price_lunch';
 import Controls from './Controls';
 import Compare from './Compare';
+import CardContainer from './CardContainer';
+import Search from './Search';
 
 export default class App extends Component {
   constructor() {
@@ -34,20 +28,12 @@ export default class App extends Component {
       'Kindergartners In Full Day Program': kinderData,
       'Online Pupil Enrollment': onlineEnrollment,
       'Title I Students': titleIStudents,
-      '3rd Grade Tests': thirdGradeTests,
-      '8th Grade Test Scores': eighthGradeTests,
-      'Average Ethnicity Math Scores': aveEthMath,
-      'Average Ethnicity Reading Scores': aveEthReading,
-      'Average Ethnicity Writing Scores': aveEthWriting,
-      'Dropout Rates by Ethnicity': dropoutRates,
       'High School Graduation Rates': hsGraduation,
       'Median Household Income': medianIncome,
       'Pupil Enrollment': regEnrollment,
-      'Pupil Enrollment by Ethnicity': enrollmentByEth,
       'Remediation in Higher Education': remediation,
       'School Aged Children in Poverty': childrenInPoverty,
-      'Special Education': specialEd,
-      'Students Qualifying for Free or Reduced Price Lunch': frLunch
+      'Special Education': specialEd
     }
   }
 
@@ -56,18 +42,29 @@ export default class App extends Component {
   }
 
   handleCardClick = (name) => {
-    if (this.state.compare.length < 2) {
-      this.setState({compare: [...this.state.compare, name]}); 
+    if (this.state.compare.length === 0) {
+      const newData = this.state.repo.findByName(name);
+
+      this.setState({ compare: [newData] }); 
+    } else if (this.state.compare.length === 1 && this.state.compare[0].location !== name) {
+      const newData = this.state.repo.findByName(name);
+      const existingData = this.state.compare[0];
+      const compareData = this.state.repo.compareDistrictAverages(existingData.location, name)
+
+      this.setState({ compare: [existingData, newData, compareData] });
     }
   }
 
   handleCompareClick = (name) => {
-    this.setState({
-      compare: 
-      this.state.compare.filter(card => {
-        return card !== name;
-      })
-    });
+    if (this.state.compare.length === 1) {
+      this.setState({ compare: [] });
+    } else if (this.state.compare.length === 3) {
+      this.state.compare.pop();
+      const newArray = this.state.compare.filter(card => {
+        return card.location !== name;
+      });
+      this.setState({ compare: newArray });
+    }
   }
 
   handleHeaderClick = (name) => {
@@ -81,11 +78,16 @@ export default class App extends Component {
       <div className='App'>
         <Controls 
           options={Object.keys(this.data)} 
-          handleHeaderClick={this.handleHeaderClick} />
+          handleClick={this.handleHeaderClick} />
         <Compare 
           toCompare={this.state.compare}
-          repo={this.state.repo}
-          handleCompareClick={this.handleCompareClick} /> 
+          handleClick={this.handleCompareClick} />
+        <Search 
+          searchValue={this.state.search}
+          handleSearch={this.handleSearch} />
+        <CardContainer 
+          cards={this.state.repo.findAllMatches(this.state.search)}
+          handleClick={this.handleCardClick} />
       </div>
     );
   }

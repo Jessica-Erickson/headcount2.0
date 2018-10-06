@@ -9,7 +9,7 @@ describe('Button', () => {
     ReactDOM.render(<Button 
                       text='testText' 
                       key='testText' 
-                      handleHeaderClick={() => {}} />, 
+                      handleClick={() => {}} />, 
                     div);
   });
 
@@ -17,7 +17,7 @@ describe('Button', () => {
     const wrapper = shallow(<Button 
                               text='testText' 
                               key='testText' 
-                              handleHeaderClick={() => {}} />);
+                              handleClick={() => {}} />);
 
     expect(wrapper).toMatchSnapshot()
   });

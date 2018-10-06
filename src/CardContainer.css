@@ -1,0 +1,6 @@
+.CardContainer {
+  align-items: start;
+  justify-content: space-evenly;
+  display: flex;
+  flex-flow: row wrap;
+}

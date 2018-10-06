@@ -3,33 +3,37 @@ import './Compare.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-export default function Compare({ toCompare , repo , handleCompareClick }) {
+const Compare = ({ toCompare , handleClick }) => {
   let cards;
   if ( toCompare.length === 1 ) {
-    const data = repo.findByName(toCompare[0]);
+    const school = toCompare[0];
     cards = (<Card 
-              data={data} 
-              handleCompareClick={handleCompareClick} />);
-  } else if ( toCompare.length === 2 ) {
-    const data1 = repo.findByName(toCompare[0]);
-    const data2 = repo.compareDistrictAverages(toCompare[0],toCompare[1]);
-    const data3 = repo.findByName(toCompare[1]);
+              data={school} 
+              handleClick={handleClick} />);
+  } else if ( toCompare.length === 3 ) {
+    const school1 = toCompare[0];
+    const school2 = toCompare[1];
+    const compared = toCompare[2];
 
     cards = (
       [
+        <Card
+          key={school1.location} 
+          data={school1} 
+          handleClick={handleClick} />,
         <Card 
-          data={data1} 
-          handleCompareClick={handleCompareClick} />,
-        <Card data={data2} />,
+          key={'compare'} 
+          data={compared} />,
         <Card 
-          data={data3} 
-          handleCompareClick={handleCompareClick} />
+          key={school2.location}
+          data={school2} 
+          handleClick={handleClick} />
       ]
     )
   }
 
   return (
-    <aside>
+    <aside className='Compare'>
       {
         cards
       }
@@ -39,6 +43,7 @@ export default function Compare({ toCompare , repo , handleCompareClick }) {
 
 Compare.propTypes = {
   toCompare: PropTypes.array.isRequired,
-  repo: PropTypes.object.isRequired,
-  handleCompareClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired
 }
+
+export default Compare;
