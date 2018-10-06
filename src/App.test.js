@@ -31,19 +31,59 @@ describe('App', () => {
   it('should update compare when a card is clicked', () => {
     const wrapper = shallow(<App />);
     const name = 'AGATE 300';
-    const expected = ['AGATE 300'];
+    const expected = [{ location: 'AGATE 300',
+                        stats:
+                          { '2004': 1,
+                            '2005': 1,
+                            '2006': 0,
+                            '2007': 1,
+                            '2008': 1,
+                            '2009': 1,
+                            '2010': 1,
+                            '2011': 1,
+                            '2012': 1,
+                            '2013': 1,
+                            '2014': 1 } }];
 
     wrapper.instance().handleCardClick(name);
 
     expect(wrapper.state('compare')).toEqual(expected);
   });
 
-  it('should add up to two cards in compare', () => {
+  it('should add up to two school cards in compare', () => {
     const wrapper = shallow(<App />);
     const name1 = 'AGATE 300';
     const name2 = 'MOFFAT 2';
     const name3 = 'LONE STAR 101';
-    const expected = ['AGATE 300', 'MOFFAT 2'];
+    const expected = [{ location: 'AGATE 300',
+                        stats:
+                        { '2004': 1,
+                          '2005': 1,
+                          '2006': 0,
+                          '2007': 1,
+                          '2008': 1,
+                          '2009': 1,
+                          '2010': 1,
+                          '2011': 1,
+                          '2012': 1,
+                          '2013': 1,
+                          '2014': 1 } },
+                      { location: 'MOFFAT 2',
+                        stats:
+                        { '2004': 0.014,
+                          '2005': 0.08,
+                          '2006': 0.081,
+                          '2007': 0.085,
+                          '2008': 0.129,
+                          '2009': 1,
+                          '2010': 1,
+                          '2011': 1,
+                          '2012': 1,
+                          '2013': 1,
+                          '2014': 1 } },
+                      { 'AGATE 300': 0.909, 
+                        'MOFFAT 2': 0.581, 
+                        compared: 1.565 } ];
 
     wrapper.instance().handleCardClick(name1);
     wrapper.instance().handleCardClick(name2);
@@ -56,7 +96,19 @@ describe('App', () => {
     const wrapper = shallow(<App />);
     const name1 = 'AGATE 300';
     const name2 = 'MOFFAT 2';
-    const expected = ['MOFFAT 2'];
+    const expected = [{ location: 'MOFFAT 2',
+                        stats:
+                        { '2004': 0.014,
+                          '2005': 0.08,
+                          '2006': 0.081,
+                          '2007': 0.085,
+                          '2008': 0.129,
+                          '2009': 1,
+                          '2010': 1,
+                          '2011': 1,
+                          '2012': 1,
+                          '2013': 1,
+                          '2014': 1 } }];
 
     wrapper.instance().handleCardClick(name1);
     wrapper.instance().handleCardClick(name2);
@@ -71,7 +123,35 @@ describe('App', () => {
     const name1 = 'AGATE 300';
     const name2 = 'MOFFAT 2';
     const name3 = 'LONE STAR 101';
-    const expected = ['AGATE 300', 'MOFFAT 2'];
+    const expected = [{ location: 'AGATE 300',
+                        stats:
+                        { '2004': 1,
+                          '2005': 1,
+                          '2006': 0,
+                          '2007': 1,
+                          '2008': 1,
+                          '2009': 1,
+                          '2010': 1,
+                          '2011': 1,
+                          '2012': 1,
+                          '2013': 1,
+                          '2014': 1 } },
+                      { location: 'MOFFAT 2',
+                        stats:
+                        { '2004': 0.014,
+                          '2005': 0.08,
+                          '2006': 0.081,
+                          '2007': 0.085,
+                          '2008': 0.129,
+                          '2009': 1,
+                          '2010': 1,
+                          '2011': 1,
+                          '2012': 1,
+                          '2013': 1,
+                          '2014': 1 } },
+                      { 'AGATE 300': 0.909, 
+                        'MOFFAT 2': 0.581, 
+                        compared: 1.565 } ];
 
     wrapper.instance().handleCardClick(name3);
     wrapper.instance().handleCardClick(name1);

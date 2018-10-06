@@ -12,7 +12,6 @@ import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import Controls from './Controls';
 import Compare from './Compare';
-import CardConatiner from './CardConatiner';
 
 export default class App extends Component {
   constructor() {
@@ -36,18 +35,29 @@ export default class App extends Component {
   }
 
   handleCardClick = (name) => {
-    if (this.state.compare.length < 2) {
-      this.setState({compare: [...this.state.compare, name]}); 
+    if (this.state.compare.length === 0) {
+      const newData = this.state.repo.findByName(name);
+
+      this.setState({ compare: [newData] }); 
+    } else if (this.state.compare.length === 1) {
+      const newData = this.state.repo.findByName(name);
+      const existingData = this.state.compare[0];
+      const compareData = this.state.repo.compareDistrictAverages(existingData.location, name)
+
+      this.setState({ compare: [existingData, newData, compareData] });
     }
   }
 
   handleCompareClick = (name) => {
-    this.setState({
-      compare: 
-      this.state.compare.filter(card => {
-        return card !== name;
-      })
-    });
+    if (this.state.compare.length === 1) {
+      this.setState({ compare: [] });
+    } else if (this.state.compare.length === 3) {
+      this.state.compare.pop();
+      const newArray = this.state.compare.filter(card => {
+        return card.location !== name;
+      });
+      this.setState({ compare: newArray });
+    }
   }
 
   handleHeaderClick = (name) => {
@@ -64,9 +74,7 @@ export default class App extends Component {
           handleHeaderClick={this.handleHeaderClick} />
         <Compare 
           toCompare={this.state.compare}
-          repo={this.state.repo}
           handleCompareClick={this.handleCompareClick} />
-        <CardConatiner />
       </div>
     );
   }

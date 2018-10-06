@@ -3,26 +3,26 @@ import './Compare.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-const Compare = ({ toCompare , repo , handleCompareClick }) => {
+const Compare = ({ toCompare , handleCompareClick }) => {
   let cards;
   if ( toCompare.length === 1 ) {
-    const data = repo.findByName(toCompare[0]);
+    const school = toCompare[0];
     cards = (<Card 
-              data={data} 
+              data={school} 
               handleCompareClick={handleCompareClick} />);
-  } else if ( toCompare.length === 2 ) {
-    const data1 = repo.findByName(toCompare[0]);
-    const data2 = repo.compareDistrictAverages(toCompare[0],toCompare[1]);
-    const data3 = repo.findByName(toCompare[1]);
+  } else if ( toCompare.length === 3 ) {
+    const school1 = toCompare[0];
+    const school2 = toCompare[1];
+    const compared = toCompare[2];
 
     cards = (
       [
         <Card 
-          data={data1} 
+          data={school1} 
           handleCompareClick={handleCompareClick} />,
-        <Card data={data2} />,
+        <Card data={compared} />,
         <Card 
-          data={data3} 
+          data={school2} 
           handleCompareClick={handleCompareClick} />
       ]
     )
@@ -39,7 +39,6 @@ const Compare = ({ toCompare , repo , handleCompareClick }) => {
 
 Compare.propTypes = {
   toCompare: PropTypes.array.isRequired,
-  repo: PropTypes.object.isRequired,
   handleCompareClick: PropTypes.func.isRequired
 }
 
