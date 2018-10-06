@@ -8,14 +8,14 @@ describe('Controls', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Controls 
                       options={[]} 
-                      handleHeaderClick={() => {}} />, 
+                      handleClick={() => {}} />, 
                     div);
   });
 
   it('should match the snapshot', () => {
     const wrapper = shallow(<Controls 
                               options={[]} 
-                              handleHeaderClick={() => {}} />);
+                              handleClick={() => {}} />);
 
     expect(wrapper).toMatchSnapshot()
   });

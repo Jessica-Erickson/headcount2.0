@@ -9,7 +9,7 @@ describe('Compare', () => {
     ReactDOM.render(<Compare 
                       toCompare={[]}
                       repo={{}}
-                      handleCompareClick={() => {}} />, 
+                      handleClick={() => {}} />, 
                     div);
   });
 
@@ -17,7 +17,7 @@ describe('Compare', () => {
     const wrapper = shallow(<Compare 
                               toCompare={[]}
                               repo={{}}
-                              handleCompareClick={() => {}} />);
+                              handleClick={() => {}} />);
 
     expect(wrapper).toMatchSnapshot()
   });

@@ -2,11 +2,11 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-const Card = ({ data , handleCompareClick }) => {
+const Card = ({ data , handleClick }) => {
   let card;
-  if (handleCompareClick) {
+  if (handleClick) {
     card = (
-      <article onClick={() => {handleCompareClick(data.location)}}>
+      <article onClick={() => {handleClick(data.location)}}>
         <h3>{data.location}</h3>
         {
           Object.keys(data.stats).map(stat => {
@@ -17,7 +17,7 @@ const Card = ({ data , handleCompareClick }) => {
         }
       </article>
     );
-  } else {
+  } else if (Object.keys(data).includes('compared')) {
     const names = Object.keys(data)
     card = (
       <article>
@@ -26,13 +26,15 @@ const Card = ({ data , handleCompareClick }) => {
         <h2>{names[1] + ': ' + data[names[1]]}</h2>
       </article>
     )
+  } else {
+    card = null;
   }
   return card;
 }
 
 Card.propTypes = {
   data: PropTypes.object.isRequired,
-  handleCompareClick: PropTypes.func
+  handleClick: PropTypes.func
 }
 
 export default Card;

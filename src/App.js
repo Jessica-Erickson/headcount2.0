@@ -12,11 +12,13 @@ import childrenInPoverty from './data/school_aged_children_in_poverty';
 import specialEd from './data/special_education';
 import Controls from './Controls';
 import Compare from './Compare';
+import CardContainer from './CardContainer';
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
+      search: '',
       compare: [],
       repo: new DistrictRepository(kinderData)
     }
@@ -32,6 +34,10 @@ export default class App extends Component {
       'School Aged Children in Poverty': childrenInPoverty,
       'Special Education': specialEd
     }
+  }
+
+  handleSearch = (event) => {
+    this.setState({search: event.target.value});
   }
 
   handleCardClick = (name) => {
@@ -71,10 +77,14 @@ export default class App extends Component {
       <div className='App'>
         <Controls 
           options={Object.keys(this.data)} 
-          handleHeaderClick={this.handleHeaderClick} />
+          handleClick={this.handleHeaderClick} />
         <Compare 
           toCompare={this.state.compare}
-          handleCompareClick={this.handleCompareClick} />
+          handleClick={this.handleCompareClick} />
+        <CardContainer 
+          cards={this.state.repo.findAllMatches(this.state.search)}
+          handleClick={this.handleCardClick}
+          searchValue={this.state.search} />
       </div>
     );
   }
