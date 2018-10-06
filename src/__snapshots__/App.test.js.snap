@@ -24,6 +24,10 @@ exports[`App should match the snapshot 1`] = `
     handleClick={[Function]}
     toCompare={Array []}
   />
+  <Search
+    handleSearch={[Function]}
+    searchValue=""
+  />
   <CardContainer
     cards={
       Array [
@@ -2926,7 +2930,6 @@ exports[`App should match the snapshot 1`] = `
       ]
     }
     handleClick={[Function]}
-    searchValue=""
   />
 </div>
 `;
