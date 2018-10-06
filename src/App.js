@@ -45,7 +45,7 @@ export default class App extends Component {
       const newData = this.state.repo.findByName(name);
 
       this.setState({ compare: [newData] }); 
-    } else if (this.state.compare.length === 1) {
+    } else if (this.state.compare.length === 1 && this.state.compare[0].location !== name) {
       const newData = this.state.repo.findByName(name);
       const existingData = this.state.compare[0];
       const compareData = this.state.repo.compareDistrictAverages(existingData.location, name)
