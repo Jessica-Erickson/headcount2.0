@@ -14,7 +14,7 @@ const Card = ({ data , handleClick }) => {
         <h2>{names[1] + ': ' + data[names[1]]}</h2>
       </article>
     )
-  } else {
+  } else if (data.stats) {
     card = (
       <article className='Card' onClick={() => {handleClick(data.location)}}>
         <h3>{data.location}</h3>
@@ -22,13 +22,15 @@ const Card = ({ data , handleClick }) => {
         {
           Object.keys(data.stats).map((stat, index) => {
             return (
-              <li key={index} >{stat + ': ' + data.stats[stat]}</li>
+              <li key={index}>{stat + ': ' + data.stats[stat]}</li>
             )
           })
         }
         </ul>
       </article>
     );
+  } else {
+    card = null;
   }
 
   return card;

@@ -3,7 +3,7 @@ import './CardContainer.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-const CardContainer = ({ cards , handleClick , searchValue }) => {
+const CardContainer = ({ cards , handleClick }) => {
   const newCards = cards.map(card => {
     return <Card data={card} key={card.location} handleClick={handleClick} />
   });
@@ -18,7 +18,7 @@ const CardContainer = ({ cards , handleClick , searchValue }) => {
 
 CardContainer.propTypes = {
   cards: PropTypes.array.isRequired,
-  searchValue: PropTypes.string.isRequired
+  handleClick: PropTypes.func.isRequired
 }
 
 export default CardContainer;

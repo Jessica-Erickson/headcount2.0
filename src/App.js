@@ -81,10 +81,12 @@ export default class App extends Component {
         <Compare 
           toCompare={this.state.compare}
           handleClick={this.handleCompareClick} />
+        <Search 
+          searchValue={this.state.search}
+          handleSearch={this.handleSearch} />
         <CardContainer 
           cards={this.state.repo.findAllMatches(this.state.search)}
-          handleClick={this.handleCardClick}
-          searchValue={this.state.search} />
+          handleClick={this.handleCardClick} />
       </div>
     );
   }
