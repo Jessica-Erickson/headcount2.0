@@ -17,11 +17,15 @@ const Compare = ({ toCompare , handleClick }) => {
 
     cards = (
       [
-        <Card 
+        <Card
+          key={school1.location} 
           data={school1} 
           handleClick={handleClick} />,
-        <Card data={compared} />,
         <Card 
+          key={'compare'} 
+          data={compared} />,
+        <Card 
+          key={school2.location}
           data={school2} 
           handleClick={handleClick} />
       ]

@@ -3,7 +3,11 @@ import './Search.css';
 import PropTypes from 'prop-types';
 
 const Search = ({ searchValue , handleSearch }) => {
-  return <input type='text' value={searchValue} onChange={handleSearch} />
+  return (
+    <div className='Search'>
+      <input type='text' value={searchValue} onChange={handleSearch} placeholder='Search' />
+    </div>
+  )
 }
 
 Search.propTypes = {
