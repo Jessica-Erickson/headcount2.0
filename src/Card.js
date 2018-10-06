@@ -4,31 +4,33 @@ import PropTypes from 'prop-types';
 
 const Card = ({ data , handleClick }) => {
   let card;
-  if (handleClick) {
-    card = (
-      <article onClick={() => {handleClick(data.location)}}>
-        <h3>{data.location}</h3>
-        {
-          Object.keys(data.stats).map(stat => {
-            return (
-              <p>{stat + ': ' + data.stats[stat]}</p>
-            )
-          })
-        }
-      </article>
-    );
-  } else if (Object.keys(data).includes('compared')) {
+
+  if (Object.keys(data).includes('compared')) {
     const names = Object.keys(data)
     card = (
-      <article>
+      <article className='Card'>
         <h2>{names[0] + ': ' + data[names[0]]}</h2>
         <h2>{'<---' + data.compared + '--->'}</h2>
         <h2>{names[1] + ': ' + data[names[1]]}</h2>
       </article>
     )
   } else {
-    card = null;
+    card = (
+      <article className='Card' onClick={() => {handleClick(data.location)}}>
+        <h3>{data.location}</h3>
+        <ul>
+        {
+          Object.keys(data.stats).map((stat, index) => {
+            return (
+              <li key={index} >{stat + ': ' + data.stats[stat]}</li>
+            )
+          })
+        }
+        </ul>
+      </article>
+    );
   }
+
   return card;
 }
 

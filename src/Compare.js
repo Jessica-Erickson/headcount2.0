@@ -29,7 +29,7 @@ const Compare = ({ toCompare , handleClick }) => {
   }
 
   return (
-    <aside>
+    <aside className='Compare'>
       {
         cards
       }
