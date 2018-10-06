@@ -16,12 +16,6 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot()
   });
 
-  it('should keep track of what is in the search bar', () => {
-    const wrapper = shallow(<App />);
-
-    expect(wrapper.state('search')).toEqual('');
-  });
-
   it('should keep track of which cards to compare', () => {
     const wrapper = shallow(<App />);
 
@@ -32,16 +26,6 @@ describe('App', () => {
     const wrapper = shallow(<App />);
 
     expect(wrapper.state('repo')).toBeInstanceOf(DistrictRepository);
-  });
-
-  it('should update search when handleSearch is called', () => {
-    const wrapper = shallow(<App />);
-    const testEvent = {target: {value: 'denver'}};
-    const expected = 'denver';
-
-    wrapper.instance().handleSearch(testEvent);
-
-    expect(wrapper.state('search')).toEqual(expected);
   });
 
   it('should update compare when a card is clicked', () => {
