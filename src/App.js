@@ -42,25 +42,29 @@ export default class App extends Component {
   }
 
   handleCardClick = (name) => {
-    if (this.state.compare.length === 0) {
-      const newData = this.state.repo.findByName(name);
+    const { compare , repo } = this.state;
+    if (compare.length === 0) {
+      const newData = repo.findByName(name);
 
-      this.setState({ compare: [newData] }); 
-    } else if (this.state.compare.length === 1 && this.state.compare[0].location !== name) {
-      const newData = this.state.repo.findByName(name);
-      const existingData = this.state.compare[0];
-      const compareData = this.state.repo.compareDistrictAverages(existingData.location, name)
+      this.setState({ compare: [newData] });
+    } else if (compare.length === 1 && compare[0].location !== name) {
+      const newData = repo.findByName(name);
+      const existingData = compare[0];
+      const compareData = repo.compareDistrictAverages(existingData.location, name)
 
       this.setState({ compare: [existingData, newData, compareData] });
+    } else if (compare[0].location === name || compare[1].location === name) {
+      this.handleCompareClick(name);
     }
   }
 
   handleCompareClick = (name) => {
-    if (this.state.compare.length === 1) {
+    const { compare } = this.state;
+    if (compare.length === 1) {
       this.setState({ compare: [] });
-    } else if (this.state.compare.length === 3) {
-      this.state.compare.pop();
-      const newArray = this.state.compare.filter(card => {
+    } else if (compare.length === 3) {
+      compare.pop();
+      const newArray = compare.filter(card => {
         return card.location !== name;
       });
       this.setState({ compare: newArray });
@@ -74,20 +78,22 @@ export default class App extends Component {
   }
 
   render() {
+    const { data , handleHeaderClick , handleCompareClick , handleSearch , handleCardClick } = this;
+    const { compare , search , repo } = this.state;
     return (
       <div className='App'>
         <Controls 
-          options={Object.keys(this.data)} 
-          handleClick={this.handleHeaderClick} />
+          options={Object.keys(data)} 
+          handleClick={handleHeaderClick} />
         <Compare 
-          toCompare={this.state.compare}
-          handleClick={this.handleCompareClick} />
+          toCompare={compare}
+          handleClick={handleCompareClick} />
         <Search 
-          searchValue={this.state.search}
-          handleSearch={this.handleSearch} />
+          searchValue={search}
+          handleSearch={handleSearch} />
         <CardContainer 
-          cards={this.state.repo.findAllMatches(this.state.search)}
-          handleClick={this.handleCardClick} />
+          cards={repo.findAllMatches(search)}
+          handleClick={handleCardClick} />
       </div>
     );
   }

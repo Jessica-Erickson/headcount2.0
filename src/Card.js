@@ -8,7 +8,7 @@ const Card = ({ data , handleClick }) => {
   if (Object.keys(data).includes('compared')) {
     const names = Object.keys(data)
     card = (
-      <article className='Card'>
+      <article className='Card2'>
         <h2>{names[0] + ': ' + data[names[0]]}</h2>
         <h2>{'<---' + data.compared + '--->'}</h2>
         <h2>{names[1] + ': ' + data[names[1]]}</h2>
@@ -16,7 +16,7 @@ const Card = ({ data , handleClick }) => {
     )
   } else if (data.stats) {
     card = (
-      <article className='Card' onClick={() => {handleClick(data.location)}}>
+      <article className='Card1' onClick={() => {handleClick(data.location)}}>
         <h3>{data.location}</h3>
         <ul>
         {

@@ -30,6 +30,8 @@ const Compare = ({ toCompare , handleClick }) => {
           handleClick={handleClick} />
       ]
     )
+  } else {
+    cards = (<h1>Please click on two cards below to compare them!</h1>)
   }
 
   return (
