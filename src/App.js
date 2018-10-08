@@ -42,16 +42,19 @@ export default class App extends Component {
   }
 
   handleCardClick = (name) => {
-    if (this.state.compare.length === 0) {
-      const newData = this.state.repo.findByName(name);
+    const { compare , repo } = this.state;
+    if (compare.length === 0) {
+      const newData = repo.findByName(name);
 
       this.setState({ compare: [newData] }); 
-    } else if (this.state.compare.length === 1 && this.state.compare[0].location !== name) {
-      const newData = this.state.repo.findByName(name);
-      const existingData = this.state.compare[0];
-      const compareData = this.state.repo.compareDistrictAverages(existingData.location, name)
+    } else if (compare.length === 1 && compare[0].location !== name) {
+      const newData = repo.findByName(name);
+      const existingData = compare[0];
+      const compareData = repo.compareDistrictAverages(existingData.location, name)
 
       this.setState({ compare: [existingData, newData, compareData] });
+    } else if (compare[0].location === name || compare[1].location === name) {
+      handleCompareClick(name);
     }
   }
 
