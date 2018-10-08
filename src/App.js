@@ -54,7 +54,7 @@ export default class App extends Component {
 
       this.setState({ compare: [existingData, newData, compareData] });
     } else if (compare[0].location === name || compare[1].location === name) {
-      handleCompareClick(name);
+      this.handleCompareClick(name);
     }
   }
 

@@ -108,27 +108,14 @@ describe('App', () => {
     expect(wrapper.state('compare')).toEqual(expected);
   });
 
-  it('should not add the same card twice', () => {
+  it('should remove the card if it is clicked again', () => {
     const wrapper = shallow(<App />);
     const name = 'AGATE 300';
-    const expected = [{ location: 'AGATE 300',
-                        stats:
-                          { '2004': 1,
-                            '2005': 1,
-                            '2006': 0,
-                            '2007': 1,
-                            '2008': 1,
-                            '2009': 1,
-                            '2010': 1,
-                            '2011': 1,
-                            '2012': 1,
-                            '2013': 1,
-                            '2014': 1 } }];
 
     wrapper.instance().handleCardClick(name);
     wrapper.instance().handleCardClick(name);
 
-    expect(wrapper.state('compare')).toEqual(expected);
+    expect(wrapper.state('compare')).toEqual([]);
   });
 
   it('should remove compare cards when clicked', () => {
