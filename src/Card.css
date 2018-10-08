@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.selected {
+  border: thick double blue;
+}
+
 ul {
   display: inline-block;
   list-style: none;

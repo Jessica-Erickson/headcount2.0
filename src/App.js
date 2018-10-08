@@ -46,7 +46,7 @@ export default class App extends Component {
     if (compare.length === 0) {
       const newData = repo.findByName(name);
 
-      this.setState({ compare: [newData] }); 
+      this.setState({ compare: [newData] });
     } else if (compare.length === 1 && compare[0].location !== name) {
       const newData = repo.findByName(name);
       const existingData = compare[0];
@@ -78,20 +78,22 @@ export default class App extends Component {
   }
 
   render() {
+    const { data , handleHeaderClick , handleCompareClick , handleSearch , handleCardClick } = this;
+    const { compare , search , repo } = this.state;
     return (
       <div className='App'>
         <Controls 
-          options={Object.keys(this.data)} 
-          handleClick={this.handleHeaderClick} />
+          options={Object.keys(data)} 
+          handleClick={handleHeaderClick} />
         <Compare 
-          toCompare={this.state.compare}
-          handleClick={this.handleCompareClick} />
+          toCompare={compare}
+          handleClick={handleCompareClick} />
         <Search 
-          searchValue={this.state.search}
-          handleSearch={this.handleSearch} />
+          searchValue={search}
+          handleSearch={handleSearch} />
         <CardContainer 
-          cards={this.state.repo.findAllMatches(this.state.search)}
-          handleClick={this.handleCardClick} />
+          cards={repo.findAllMatches(search)}
+          handleClick={handleCardClick} />
       </div>
     );
   }
