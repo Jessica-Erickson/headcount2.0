@@ -1,10 +1,19 @@
-.Card {
+.Card1, .Card2 {
   align-content: center;
+  border: thin solid black;
+  border-radius: .5rem;
+  box-shadow: .5rem .5rem 1rem black;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   margin: 1rem;
+  padding: 1rem;
   width: 200px;
+}
+
+.Card1:hover {
+  box-shadow: 1rem 1rem 1rem black;
+  cursor: pointer;
 }
 
 ul {
